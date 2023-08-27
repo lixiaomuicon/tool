@@ -1,0 +1,223 @@
+
+*{
+    box-sizing: border-box;
+}
+.clearfix::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+.fl{float: left;}
+.fr{float: right;}
+html,
+body {
+    margin: 0;
+    height: 100%;
+    font-size: 14px;
+    color:#222;
+}
+
+.contentbox{
+    width:1500px;
+    margin:0 auto;
+    background:#ededed;
+    box-shadow: 0 0 4px #ccc;
+}
+.title{
+    text-align: center;
+    font-size: 18px;
+    color:#fff;
+    line-height: 60px;
+    background:#000;
+}
+.dropbox{
+    width:400px;
+    height: 200px;
+    margin:20px auto;
+    border:1px dashed #999;
+    border-radius: 10px;
+    position: relative;
+}
+.dropbox::after{
+    content:'';
+    position: absolute;
+    top:96px;
+    bottom: 96px;
+    left:150px;
+    right: 150px;
+    background: #666;
+    border-radius: 4px;
+}
+.dropbox::before{
+    content:'';
+    position: absolute;
+    top:50px;
+    bottom: 50px;
+    left:196px;
+    right: 196px;
+    background: #666;
+    border-radius: 4px;
+}
+.dropbox.act{
+    box-shadow: 0 0 6px rgb(243, 125, 125);
+}
+.showbox{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    padding:20px;
+    min-height: 410px;
+}
+.showitem{
+    /* float: left; */
+    width: 220px;
+    height: 400px;
+    background: #fff;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+.imgitem{
+    height: 360px;
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+.btnbox{
+    height: 40px;
+    padding:5px 0;
+    background:rgba(255, 255, 255, 0.1) ;
+}
+.btnbox .btn{
+    line-height: 30px;
+    padding:0 10px;
+    border-radius: 6px;
+    margin-right: 10px;
+    border-width: 1px;
+    border-style: solid;
+    cursor: pointer;
+}
+.btn.del{
+    color:#e790e0;
+    border-color:#e790e0;
+}
+.btn.download{
+    color:#fff;
+    background: #6f66f0;
+    border-color:#6f66f0;
+
+}
+.btn.edit-item{
+    color:#fff;
+    background: rgb(173, 219, 173);
+    border-color:rgb(173, 219, 173);
+
+}
+.pagebtnbox{
+    display: none;
+    padding:0 60px;
+}
+.mask{
+    display:none;
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0,.2);
+}
+.loadingbox{
+    /* display: none; */
+    width:100px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.6);
+    margin:200px auto;
+    border-radius: 10px;
+    padding:40px;
+    box-sizing: border-box;
+}
+.loading{
+    width:20px;
+    height: 20px;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: 4px;
+    border-top-color: rgba(255, 0, 0, 0.1);
+    border-left-color: rgba(0, 255, 0, 0.2);
+    border-right-color: rgba(0, 0, 255, 0.3);
+    border-bottom-color: rgba(255, 255, 0, 0.4);
+    animation: circle 1s linear infinite;
+}
+.editcontent{
+    width:200px;
+    margin:200px auto 0;
+    background:#fff;
+    border-radius: 10px;
+    padding:20px;
+}
+#edititeminput{
+    height: 30px;
+    width: 160px;
+    line-height: 30px;
+    padding:0 10px;
+    border-color: #6f66f0;
+    color:#6f66f0;
+    border-radius: 6px;
+    outline: none; 
+}
+.mask-btn-box{
+    padding:40px 0 0;
+}
+.mask-btn{
+    margin-left: 20px;
+    padding:0 10px;
+    border-radius: 6px;
+    line-height: 30px;
+    border-style: solid;
+    border-width: 1px;
+}
+.mask-btn-sure{
+    color:#fff;
+    border-color: #6f66f0;
+    background:#6f66f0;
+
+}
+.mask-btn-cancle{
+    background:#fff;
+    color: #6f66f0;
+    border-color: #6f66f0;
+
+}
+@keyframes circle{
+    0%{
+        transform: rotate(0);
+    }
+    100%{
+        transform: rotate(360deg);
+
+    }
+}
+.editallbox{
+    width:300px;
+    margin:0 auto;
+}
+.word-all-input{
+    height: 30px;
+    width: 190px;
+    line-height: 30px;
+    padding:0 10px;
+    border-color: #6f66f0;
+    color:#6f66f0;
+    border-radius: 6px;
+    outline: none;
+}
+.word-all-save{
+    line-height: 30px;
+    padding:0 10px;
+    background:#6f66f0;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+}
+
