@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>水印</title>
+    <link rel="stylesheet" href="./watermark/index.css">
+    <link rel="shortcut icon" href="img/love1.png">
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+<script src="./watermark/water.js"></script>
+<script>
+    $(function() {
+        var waterPrient = new WaterPrient({
+            container: 'container',
+            text: '我是水印'
+        })
+    })
+</script>
+
+</html>
