@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .dadiv {
+            margin: 30px;
+        }
+        
+        .box {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .ball {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #fff;
+            text-align: center;
+            line-height: 30px;
+            margin: 0 5px;
+            /* float: left; */
+            color: #fff;
+        }
+        
+        .red-ball {
+            background-color: red;
+        }
+        
+        .blue-ball {
+            background-color: blue;
+        }
+        
+        .btn-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+        }
+        
+        .btn {
+            width: 30%;
+            height: 30px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 30px;
+            margin: 10px 5px;
+            color: #fff;
+        }
+        
+        .red-btn {
+            background-color: red;
+        }
+        
+        .blue-btn {
+            background-color: blue;
+        }
+        
+        .dotted-line {
+            border: none;
+            border-top: 1px dashed #000;
+        }
+        
+        .bordered-div {
+            border: 2px solid #4285F4;
+            /* 边框宽度、样式和颜色 */
+            border-radius: 20px;
+            /* 圆角 */
+            padding: 20px;
+            /* 内边距 */
+            margin: 10px;
+            /* 外边距 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* 阴影效果 */
+        }
+        
+        .bordered-div2 {
+            border: 2px solid #f92626;
+            /* 边框宽度、样式和颜色 */
+            border-radius: 20px;
+            /* 圆角 */
+            padding: 20px;
+            /* 内边距 */
+            margin: 10px;
+            /* 外边距 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* 阴影效果 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dadiv">
+        <div class="bordered-div">
+            <div class=" btn-box ">
+                <a href="https://www.lottery.gov.cn/dlt/" target="_blank"><b>大乐透--体彩</b></a>
+            </div>
+            <div class=" btn-box ">
+                <button class="btn blue-btn dlt1 ">
+      生成一注
+    </button>
+                <button class="btn blue-btn dlt5 ">
+      生成五注
+    </button>
+            </div>
+        </div>
+
+        <div class="bordered-div2">
+            <div class="btn-box ">
+                <a href="https://www.cwl.gov.cn/ygkj/wqkjgg/" target="_blank"><b>双色球--福彩</b></a>
+            </div>
+            <div class="btn-box ">
+                <button class="btn red-btn ssq1 ">
+    生成一注
+  </button>
+                <button class="btn red-btn ssq5 ">
+    生成五注
+  </button>
+            </div>
+        </div>
+        <hr class="dotted-line ">
+        <br>
+    </div>
+</body>
+<script>
+    function getRandom(min, max, a) {
+        //生成5个1-35之间不重复的随机整数
+        var arr1 = [];
+        while (arr1.length < a) {
+            var num = Math.floor(Math.random() * max + 1);
+            if (arr1.indexOf(num) == -1) {
+                arr1.push(num);
+            }
+        }
+        //生成2个1-12之间不重复的随机整数
+        var arr2 = [];
+        while (arr2.length < (7 - a)) {
+            var num = Math.floor(Math.random() * min + 1);
+            if (arr2.indexOf(num) == -1) {
+                arr2.push(num);
+            }
+        }
+        //返回一个对象
+        return {
+            arr1: arr1,
+            arr2: arr2
+        };
+    }
+
+    //创建n个类名为box的div并将创建好的div添加到body中
+    function createDiv(m, n, className1, className2) {
+        var box = document.createElement('div');
+        box.className = 'box';
+        for (let i = 0; i < m.length; i++) {
+            let ball = document.createElement('div');
+            ball.className = className1;
+            ball.innerHTML = m[i];
+            box.appendChild(ball);
+        }
+        for (let i = 0; i < n.length; i++) {
+            let ball = document.createElement('div');
+            ball.className = className2;
+            ball.innerHTML = n[i];
+            box.appendChild(ball);
+        }
+        document.body.appendChild(box);
+    }
+
+    //清除类名为ball的div
+    function removeDom() {
+        var box = document.querySelectorAll('.box');
+        for (let i = 0; i < box.length; i++) {
+            box[i].remove();
+        }
+    }
+    //生成一注大乐透
+    document.querySelector('.dlt1').onclick = function() {
+            removeDom()
+            var arr = getRandom(12, 35, 5);
+            createDiv(arr.arr1, arr.arr2, 'ball red-ball', 'ball blue-ball');
+        }
+        //生成一注双色球
+    document.querySelector('.ssq1').onclick = function() {
+        removeDom()
+        var arr = getRandom(16, 33, 6);
+        createDiv(arr.arr1, arr.arr2, 'ball red-ball ', 'ball blue-ball');
+    }
+
+    //监听点击事件生成五注大乐透
+    document.querySelector('.dlt5').onclick = function() {
+        removeDom()
+        for (let i = 0; i < 5; i++) {
+            var arr = getRandom(12, 35, 5);
+            createDiv(arr.arr1, arr.arr2, 'ball red-ball', 'ball blue-ball');
+        }
+    }
+
+    //生成五注双色球
+    document.querySelector('.ssq5').onclick = function() {
+        removeDom()
+        for (let i = 0; i < 5; i++) {
+            var arr = getRandom(16, 33, 6);
+            createDiv(arr.arr1, arr.arr2, 'ball red-ball', 'ball blue-ball');
+        }
+    }
+</script>
+
+</html>
